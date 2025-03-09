@@ -1,5 +1,5 @@
 //export const API_BASE: string = "https://localhost:7002";
-export const API_BASE: string = "http://DeliveryProductAPI.somee.com";
+export const API_BASE: string = "https://deliveryproductapi.bsite.net";
 
 export const LOGIN_MIN = 3;
 export const LOGIN_MAX = 64;
