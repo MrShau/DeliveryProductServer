@@ -127,6 +127,7 @@ export default function Chats() {
                         <Row className="h-100">
                             <Col xs={4} xxl={3} className="border p-0 h-100 overflow-auto">
                                 {chats.map((item, index) => <div key={index} onClick={() => setChatId(item.id)} className={`border p-3 ${item.id == chatId ? 'bg-dark text-light' : 'bg-light'}`} style={{ cursor: 'pointer' }}>
+                                    <div className="text-secondary small">Заказ № {item.orderId}</div>
                                     <div className="text-secondary small">#{item.clientLogin}</div>
                                     <div className="overflow-hidden" style={{ textWrap: 'nowrap' }}>{item.lastMessage}</div>
                                     <div className="text-secondary small">{(new Date(item.lastMessageDate).toLocaleDateString())} {(new Date(item.lastMessageDate).toLocaleTimeString())}</div>
