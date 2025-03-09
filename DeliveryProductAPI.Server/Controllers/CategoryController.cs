@@ -84,7 +84,8 @@ namespace DeliveryProductAPI.Server.Controllers
                     Description = product.Description,
                     CategoryId = product.CategoryId,
                     Weight = product.Weight,
-                    WeightUnit = product.WeightUnit
+                    WeightUnit = product.WeightUnit,
+                    Count = product.Count
                 });
 
             }
@@ -105,10 +106,6 @@ namespace DeliveryProductAPI.Server.Controllers
 
             string path = $"/images/{Guid.NewGuid()}_{Path.GetExtension(dto.ImageFile.FileName)}";
             await System.IO.File.WriteAllBytesAsync(Path.Combine(_env.WebRootPath, path.Substring(1)), await Helpers.ResizeImageAsync(dto.ImageFile));
-            /*using (var stream = new FileStream(Path.Combine(_env.WebRootPath, path.Substring(1)), FileMode.Create))
-            {
-                await dto.ImageFile.CopyToAsync(stream);
-            }*/
 
             Product? product = await _productRepository.AddAsync(new Product(
                 dto.Title,
@@ -117,7 +114,8 @@ namespace DeliveryProductAPI.Server.Controllers
                 category,
                 path,
                 dto.Weight,
-                dto.WeightUnit
+                dto.WeightUnit,
+                dto.Count
                 ));
 
             if (product == null)

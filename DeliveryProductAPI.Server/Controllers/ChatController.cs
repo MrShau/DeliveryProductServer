@@ -109,11 +109,6 @@ namespace DeliveryProductAPI.Server.Controllers
             string path = $"/images/{Guid.NewGuid()}.jpg";
             await System.IO.File.WriteAllBytesAsync(Path.Combine(_env.WebRootPath, path.Substring(1)), jpgBytes);
 
-            /*using (var stream = new FileStream(Path.Combine(_env.WebRootPath, path.Substring(1)), FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }*/
-
             return Ok(path);
         }
     }

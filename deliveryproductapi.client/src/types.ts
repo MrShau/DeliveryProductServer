@@ -19,7 +19,8 @@ export type ProductType = {
     categoryId: number | null,
     categoryName: string | null,
     weight: number,
-    weightUnit: string
+    weightUnit: string,
+    count: number
 }
 
 export type OrderProductItemType = {

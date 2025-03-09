@@ -63,6 +63,18 @@ class ProductApi {
         } catch(ex) {console.log(ex)}
     }
 
+    async updateCount(id: number, count: number) {
+        try {
+            await axios.patch(`${API_BASE}/api/product/update_count/${id}/${count}`, {}, {
+                headers: {
+                    Authorization: getToken()
+                }
+            })
+                .then(() => {})
+                .catch(() => {alert("Не удалось изменить количество, ошибка")})
+        } catch(ex) {console.log(ex)}
+    }
+
     async updateImage(id: number, imageFile: File) {
         let formData = new FormData()
         formData.append("id", id.toString())

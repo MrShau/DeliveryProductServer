@@ -24,6 +24,9 @@ namespace DeliveryProductAPI.Server.Dtos
         public string WeightUnit { get; set; }
 
         [Required]
+        public int Count { get; set; }
+
+        [Required]
         public IFormFile ImageFile { get; set; }
     }
 }

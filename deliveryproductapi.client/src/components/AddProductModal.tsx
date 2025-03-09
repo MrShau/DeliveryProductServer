@@ -15,6 +15,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, categoryId, handleClo
     const [price, setPrice] = useState(0);
     const [weight, setWeight] = useState(0);
     const [weightUnit, setWeightUnit] = useState("");
+    const [count, setCount] = useState(0);
 
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
@@ -36,7 +37,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, categoryId, handleClo
         if (weightUnit.length < 2)
             return alert("Выберите единицу измерения");
 
-        await CategoryApi.addProduct(categoryId, name, description, image, price, weight, weightUnit);
+        await CategoryApi.addProduct(categoryId, name, description, image, price, weight, weightUnit, count);
 
         setName('');
         setDescription('');
@@ -44,6 +45,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, categoryId, handleClo
         setPrice(0);
         setWeight(0);
         setWeightUnit("");
+        setCount(0);
 
         handleClose();
     };
@@ -111,6 +113,16 @@ const ProductModal: React.FC<ProductModalProps> = ({ show, categoryId, handleClo
                         </Form.Select>
                     </Form.Group>
                 </Form>
+
+                <Form.Group controlId="formProductPrice" className="mt-3">
+                        <Form.Label>Количество</Form.Label>
+                        <Form.Control
+                            type="number"
+                            placeholder="Введите количество"
+                            value={count}
+                            onChange={(e) => setCount(Number(e.target.value))}
+                        />
+                    </Form.Group>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

@@ -50,7 +50,7 @@ export default function Category() {
                 <Row xs={1} md={2} lg={3} xl={4} xxl={5} className="my-2 g-4 overflow-auto">
                     {products.map((product, index) => (
                     <Col key={index}>
-                        <Card style={{height: "282px"}}>
+                        <Card style={{height: "302px"}}>
                         <div className="position-relative">
                             <Card.Img variant="top" src={`${API_BASE}${product.imagePath}`} style={{height: "152px", objectFit: "cover"}} />
                             <div className="position-absolute top-0 p-1" style={{right: 0, background: "rgba(0, 0, 0, .5)"}}>
@@ -72,6 +72,7 @@ export default function Category() {
                             <Card.Title className="ellipsis-text my-1">{product.title}</Card.Title>
                             <div className="text-secondary">Цена: {product.price} ₽</div>
                             <div className="text-secondary">Граммовка: {product.weight} {product.weightUnit}</div>
+                            <div className="text-secondary">В наличии: {product.count}</div>
                             <Card.Text className="text-secondary ellipsis-text">Описание: {product.description}</Card.Text>
                         </Card.Body>
                         </Card>

@@ -76,6 +76,14 @@ const UpdateProductModal: React.FC<UpdateProductModalProps> = ({ show, handleClo
                 await ProductApi.updateCategory(productId, product.categoryId ?? 0);
         }
 
+        if ((product?.count ?? 0) < 0)
+            return alert("Введите количество");
+        else 
+        {
+            if (originalProduct.count !== product.count)
+                await ProductApi.updateCount(productId, product.count ?? 0);
+        }
+
         if (image != null && image.size > 0)
             await ProductApi.updateImage(productId, image)
 
@@ -134,6 +142,16 @@ const UpdateProductModal: React.FC<UpdateProductModalProps> = ({ show, handleClo
                             name="price"
                             min="1"
                             value={product?.price ?? 0}
+                            onChange={handleChange}
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Количество</Form.Label>
+                        <Form.Control
+                            type="number"
+                            name="count"
+                            min="0"
+                            value={product?.count ?? 0}
                             onChange={handleChange}
                         />
                     </Form.Group>

@@ -44,7 +44,8 @@ namespace DeliveryProductAPI.Server.Controllers
                 categoryId = product.CategoryId,
                 categoryName = product.Category.Name,
                 weight = product.Weight,
-                weightUnit = product.WeightUnit
+                weightUnit = product.WeightUnit,
+                count = product.Count
             });
         }
 
@@ -107,6 +108,22 @@ namespace DeliveryProductAPI.Server.Controllers
                 return BadRequest();
 
             product.Price = price;
+            await _productRepository.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [HttpPatch("update_count/{id}/{count}")]
+        public async Task<IActionResult> UpdateCount(int id, int count)
+        {
+            if (id < 1 || count < 0)
+                return BadRequest();
+
+            Product? product = await _productRepository.FirstAsync(id);
+            if (product == null)
+                return BadRequest();
+
+            product.Count = count;
             await _productRepository.SaveChangesAsync();
 
             return Ok();

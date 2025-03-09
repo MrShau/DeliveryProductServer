@@ -47,6 +47,8 @@ namespace DeliveryProductAPI.Server.Controllers
                 var product = await _productRepository.FirstAsync(item.ProductId);
                 if (product != null)
                 {
+                    product.Count -= item.Count;
+                    await _orderRepository.SaveChangesAsync();
                     products.Add(product);
                     totalPrice += product.Price * item.Count;
                 }

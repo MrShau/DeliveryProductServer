@@ -55,7 +55,7 @@ class CategoryApi {
         } catch (ex) {console.log(ex)}
     }
 
-    async addProduct(categoryId: number, title: string, description: string, imageFile: File, price: number, weight: number, weightUnit: string) {
+    async addProduct(categoryId: number, title: string, description: string, imageFile: File, price: number, weight: number, weightUnit: string, count: number) {
         const formData = new FormData();
         formData.append("categoryId", categoryId.toString());
         formData.append("title", title);
@@ -64,6 +64,7 @@ class CategoryApi {
         formData.append("price", price.toString());
         formData.append("weight", weight.toString());
         formData.append("weightUnit", weightUnit);
+        formData.append("count", count.toString());
 
         try {
             await axios.post(`${API_BASE}/api/category/add_product`, formData, {

@@ -25,6 +25,8 @@ namespace DeliveryProductAPI.Server.Models
         public double Weight { get; set; }
         public string WeightUnit { get; set; }
 
+        public int Count { get; set; }
+
         [Required]
         public string ImagePath { get; set; }
 
@@ -46,7 +48,8 @@ namespace DeliveryProductAPI.Server.Models
             Category category,
             string imagePath,
             double weight,
-            string weightUnit) : this()
+            string weightUnit,
+            int count) : this()
         {
             Title = title;
             Description = description;
@@ -55,6 +58,7 @@ namespace DeliveryProductAPI.Server.Models
             ImagePath = imagePath;
             Weight = weight;
             WeightUnit = weightUnit;
+            Count = count;
         }
     }
 }
