@@ -1,0 +1,9 @@
+body {
+  background-color: whitesmoke !important;
+}
+
+.ellipsis-text {
+  white-space: nowrap;    
+  overflow: hidden;         
+  text-overflow: ellipsis;  
+}
